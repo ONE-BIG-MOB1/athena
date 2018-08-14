@@ -1,0 +1,12 @@
+node_modules
+lib
+dist
+test-reports
+yarn.lock
+yarn-error.log
+.idea
+.test
+.nyc_output
+*.log
+.npmrc
+.history
