@@ -6,13 +6,15 @@ const app = express();
 app.set('view engine', 'pug');
 
 app.get('/search', (req, res) => {
-    res.sendFile('search.html', {root: './lib/'});
+    res.sendFile('search.html', {root: './lib'});
 });
 
 let ancientsHtml;
 app.get('/', (req, res) => {
     res.render('index', {ancients: ancientsHtml});
 });
+
+app.use(express.static('lib'));
 
 app.listen(SERVER_PORT, async () => {
     ancientsHtml = convertAncientsToHtml(await fetchAncients());

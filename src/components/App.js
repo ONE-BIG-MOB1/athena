@@ -17,17 +17,16 @@ export default class App extends Component {
         return `${ANCIENTS_URL}?search=${query}`;
     }
 
-    async searchAncients(event) {
+    async searchAncients(query) {
         try {
-            const result = await axios.get(this.getSearchUrl(event.target.value));
-            console.log('fetch result:', result);
+            const result = await axios({method: 'get', url: this.getSearchUrl(query) });
+            const {data = {}} = result;
             this.setState({
-                searchResults: result
+                searchResults: data
             });
         } catch (e) {
             console.error(e);
         }
-
     }
 
     render () {
