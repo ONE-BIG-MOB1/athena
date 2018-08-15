@@ -20,9 +20,9 @@ export default class App extends Component {
 
     getOptions() {
         return (
-            <div>
-                <button onClick={() => this.selectOption(VIEW_OPTIONS.SEARCH)}>Search</button>
-                <button onClick={() => this.selectOption(VIEW_OPTIONS.ERROR)}>Error</button>
+            <div className="options">
+                <button className="btn" onClick={() => this.selectOption(VIEW_OPTIONS.SEARCH)}>Search</button>
+                <button className="btn" onClick={() => this.selectOption(VIEW_OPTIONS.ERROR)}>Error</button>
             </div>
         )
     }
@@ -31,7 +31,7 @@ export default class App extends Component {
         const {selected} = this.state;
 
         return (
-            <div>
+            <div className="app">
                 {this.getOptions()}
                 {selected === VIEW_OPTIONS.SEARCH && <Search />}
                 {selected === VIEW_OPTIONS.ERROR && <Error />}

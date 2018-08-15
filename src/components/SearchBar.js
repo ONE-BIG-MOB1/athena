@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles.scss';
 
 export default class SearchBar extends Component {
     constructor(props) {
@@ -26,8 +27,8 @@ export default class SearchBar extends Component {
         const {searchQuery} = this.state;
 
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            <div className="search-bar">
+                <form className="search-bar__form" onSubmit={this.handleSubmit}>
                     <label>
                         Query:
                         <input type="text" value={searchQuery} onChange={this.handleChange} />

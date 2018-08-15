@@ -1,0 +1,55 @@
+body {
+  font-family: monospace;
+  background-color: #eee;
+  display: flex;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  min-height: 80vh;
+  min-width: 100vw;
+}
+
+.options {
+  transition: 2s;
+}
+
+.btn {
+  z-index: inherit;
+  font-size: x-large;
+  font-family: monospace;
+  letter-spacing: 1px;
+  color: blue;
+  font-style: italic;
+  margin: 0 5vw 0 5vw;
+  height: 10vh;
+  background-color: #ccc;
+  text-decoration: underline;
+  width: 20vw;
+  border: 2px solid blue;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transform-origin: 0 100%;
+  &:hover {
+    transform: skew(-10deg);
+    cursor: pointer;
+  }
+}
+
+.search {
+  top: 55vh;
+  position: absolute;
+}
+
+.error {
+  top: 55vh;
+  position: absolute;
+  width: 20vw;
+  height: 10vh;
+}

@@ -9,7 +9,7 @@ export default class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchResults: {},
+            searchResults: '',
             cache: {}
         };
         this.memoizedSearchAncients = this.memoizedSearchAncients.bind(this);
@@ -45,8 +45,8 @@ export default class Search extends Component {
         const {searchResults} = this.state;
 
         return (
-            <div>
-                <p>ENTER SEARCH QUERY:</p>
+            <div className="search">
+                <p className="search__query">ENTER SEARCH QUERY:</p>
                 <SearchBar searchAncients={this.memoizedSearchAncients} />
                 <SearchResults results={searchResults} />
             </div>

@@ -40,7 +40,7 @@ export default class Error extends Component {
         const {errorMsg} = this.state;
 
         return (
-            <div>
+            <div className="error">
                 <h2>ERROR:</h2>
                 <p>{errorMsg}</p>
             </div>
