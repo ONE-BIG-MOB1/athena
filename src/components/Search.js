@@ -15,19 +15,6 @@ export default class Search extends Component {
         this.memoizedSearchAncients = this.memoizedSearchAncients.bind(this);
     }
 
-    memoizedSearchAncients(query) {
-        const {cache} = this.state;
-        const cached = cache[query];
-        if (typeof cached !== 'undefined') {
-            this.setState({searchResults: cached});
-        } else {
-            this.searchAncients(query).then((ancients) => {
-                const updatedCache = Object.assign(cache, {[query]: ancients});
-                this.setState({cache: updatedCache, searchResults: ancients})
-            });
-        }
-    }
-
     getSearchUrl(query) {
         return `${ANCIENTS_URL}${SEARCH_QUERY_PARAM}${query}`;
     }
@@ -38,6 +25,19 @@ export default class Search extends Component {
             return res.data || {};
         } catch (e) {
             console.error(e);
+        }
+    }
+
+    memoizedSearchAncients(query) {
+        const {cache} = this.state;
+        const cached = cache[query];
+        if (typeof cached !== 'undefined') {
+            this.setState({searchResults: cached});
+        } else {
+            this.searchAncients(query).then((ancients) => {
+                const updatedCache = Object.assign(cache, {[query]: ancients});
+                this.setState({cache: updatedCache, searchResults: ancients})
+            });
         }
     }
 
