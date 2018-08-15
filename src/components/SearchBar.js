@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class App extends Component {
+export default class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = {searchQuery: ''};
@@ -27,7 +27,6 @@ export default class App extends Component {
 
         return (
             <div>
-                <p>ENTER SEARCH QUERY:</p>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Query:

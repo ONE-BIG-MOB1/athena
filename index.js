@@ -6,7 +6,11 @@ const app = express();
 app.set('view engine', 'pug');
 
 app.get('/search', (req, res) => {
-    res.sendFile('search.html', {root: './lib'});
+    res.sendFile('index.html', {root: './lib'});
+});
+
+app.get('/error', (req, res) => {
+    res.sendFile('index.html', {root: './lib'});
 });
 
 let ancientsHtml;

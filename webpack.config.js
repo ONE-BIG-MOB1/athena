@@ -1,8 +1,8 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const htmlPlugin = new HtmlWebPackPlugin({
-    template: "./lib/search.html",
-    filename: "./search.html"
+    template: "./lib/index.html",
+    filename: "./index.html"
 });
 
 module.exports = {

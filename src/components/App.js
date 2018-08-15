@@ -1,41 +1,40 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import SearchBar from './SearchBar';
-import SearchResults from './SearchResults';
-import {ANCIENTS_URL} from '../../consts';
+import Search from './Search';
+import Error from './Error';
+import {VIEW_OPTIONS} from './consts';
 
 export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchResults: {}
+            selected: ''
         };
-        this.searchAncients = this.searchAncients.bind(this);
+        this.selectOption = this.selectOption.bind(this);
     }
 
-    getSearchUrl(query) {
-        return `${ANCIENTS_URL}?search=${query}`;
+    selectOption(option) {
+        this.setState({
+           selected: option
+        });
     }
 
-    async searchAncients(query) {
-        try {
-            const result = await axios({method: 'get', url: this.getSearchUrl(query) });
-            const {data = {}} = result;
-            this.setState({
-                searchResults: data
-            });
-        } catch (e) {
-            console.error(e);
-        }
+    getOptions() {
+        return (
+            <div>
+                <button onClick={() => this.selectOption(VIEW_OPTIONS.SEARCH)}>Search</button>
+                <button onClick={() => this.selectOption(VIEW_OPTIONS.ERROR)}>Error</button>
+            </div>
+        )
     }
 
-    render () {
-        const {searchResults} = this.state;
+    render() {
+        const {selected} = this.state;
 
         return (
             <div>
-                <SearchBar searchAncients={this.searchAncients} />
-                <SearchResults results={searchResults} />
+                {this.getOptions()}
+                {selected === VIEW_OPTIONS.SEARCH && <Search />}
+                {selected === VIEW_OPTIONS.ERROR && <Error />}
             </div>
         );
     }
