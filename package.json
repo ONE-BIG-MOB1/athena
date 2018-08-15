@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --mode development",
+    "start": "npm-run-all --serial build:dev start:server",
+    "start:server": "node server.js",
+    "build:dev": "webpack --mode development",
     "dev": "npm-run-all --parallel dev:es6 demo:webpackServer",
     "dev:es6": "npm run comp:es6 -- --watch",
     "comp:es6": "./node_modules/.bin/babel ./src --out-dir ./lib --copy-files",
-    "demo:webpackServer": "webpack-dev-server --mode development --open",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production"
+    "demo:webpackServer": "webpack-dev-server --mode development --open"
   },
   "author": "Brendan Byrne",
   "license": "ISC",
