@@ -9,5 +9,6 @@ yarn-error.log
 .test
 .nyc_output
 *.log
+*.iml
 .npmrc
 .history
